@@ -1,6 +1,8 @@
 mod app;
 mod components;
 
-fn main() {
-    app::render();
+use crate::app::App;
+
+pub fn main() {
+    yew::Renderer::<App>::new().render();   
 }
