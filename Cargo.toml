@@ -7,10 +7,10 @@ edition = "2021"
 
 [dependencies]
 yew = { version = "0.20.0", features = ["csr"] }
-
-[lib]
-name = "error_dashboard"
-path = "src/main.rs"
+stylist = { version = "0.12.1", features = ["yew_integration"] }
+log = "0.4.6"
+wasm-logger = "0.2.0"
+yew-router = "0.17"
 
 [[bin]]
 name = "app"
