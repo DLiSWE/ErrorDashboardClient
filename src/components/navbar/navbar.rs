@@ -19,7 +19,6 @@ pub fn navbar() -> Html {
         html! {
             <button class={navbutton} {onclick}>{"Home"}</button>
         }
-
     };
 
     html! {
