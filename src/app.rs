@@ -4,6 +4,7 @@ use yew_router::router::BrowserRouter;
 use crate::components::navbar::navbar::Navbar;
 use crate::routes::{AppRoute, switch};
 
+
 #[function_component(App)]
 pub fn app() -> Html {
     html! {

@@ -5,6 +5,7 @@ mod routes;
 mod hooks;
 mod validations;
 mod dtos;
+mod globals;
 
 use crate::app::App;
 
