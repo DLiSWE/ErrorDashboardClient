@@ -17,6 +17,21 @@ pub fn navbar_container() -> String {
 }
 
 #[allow(non_upper_case_globals)]
+pub fn navbar_logo_container() -> String {
+    stylist::style!("
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        align-text: center;
+        padding: 0 10px 0 10px;
+        :hover {
+            cursor: pointer;
+        }
+    ").unwrap().get_class_name().to_string()
+}
+
+#[allow(non_upper_case_globals)]
 pub fn navlinks() -> String {
     stylist::style!("
         min-width: 300px;
@@ -35,6 +50,7 @@ pub fn navbutton() -> String {
         border-radius:5px;
         :hover {
             background-color: #babfb6;
+            cursor: pointer;
         }
     ").unwrap().get_class_name().to_string()
 }
