@@ -3,6 +3,8 @@ mod components;
 mod views;
 mod routes;
 mod hooks;
+mod validations;
+mod dtos;
 
 use crate::app::App;
 
