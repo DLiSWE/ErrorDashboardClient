@@ -56,4 +56,3 @@ where
 
     (data_handler, loading_handler, error_handler)
 }
-
