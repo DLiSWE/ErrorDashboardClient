@@ -15,6 +15,7 @@ where
     let loading_handler = use_state(|| Rc::new(true));
     let error_handler = use_state(|| Rc::new(None));
 
+
     let url_rc = Rc::new(url.to_string());
 
     let _ = use_effect_with_deps(
