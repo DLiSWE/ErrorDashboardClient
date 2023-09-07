@@ -46,8 +46,7 @@ pub fn navlinks() -> String {
             padding: unset;
             background-color: #d9dcd7;
             right: 1%;
-            top: 20%;
-
+            top: 60px;
         }
     ").unwrap().get_class_name().to_string()
 }
