@@ -20,6 +20,7 @@ wasm-bindgen-futures = "0.4"
 web-sys = "0.3.64"
 yew = { version = "0.20.0", features = ["csr"] }
 yew-router = "0.17"
+yew_icons = { version = "0.7.2", features = [ "HeroiconsSolidHome", "BootstrapDoorClosedFill", "BootstrapDoorOpenFill", "FontAwesomeSolidJoint" , "HeroiconsSolidClipboardDocumentCheck", "HeroiconsSolidQueueList", "LucideLayoutDashboard", "LucideMenu"]}
 
 [[bin]]
 name = "app"
