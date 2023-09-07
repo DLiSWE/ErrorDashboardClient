@@ -91,7 +91,7 @@ pub fn navbar() -> Html {
         let navigator = navigator.clone();
         let onclick = Callback::from(move |_| navigator.push(&AppRoute::RegistrationPage));
         html! {
-            <button title={"Logout"} class={navbutton_class.clone()} {onclick}>
+            <button title={"Register"} class={navbutton_class.clone()} {onclick}>
                 <Icon icon_id={IconId::HeroiconsSolidClipboardDocumentCheck}/>
             </button>
         }
@@ -101,7 +101,7 @@ pub fn navbar() -> Html {
         let navigator = navigator.clone();
         let onclick = Callback::from(move |_| navigator.push(&AppRoute::DashboardPage));
         html! {
-            <button class={navbutton_class.clone()} {onclick}>
+            <button title={"Dashboard"} class={navbutton_class.clone()} {onclick}>
                 <Icon icon_id={IconId::LucideLayoutDashboard}/>
             </button>
         }
