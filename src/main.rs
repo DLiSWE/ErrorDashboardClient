@@ -4,8 +4,8 @@ mod views;
 mod routes;
 mod hooks;
 mod validations;
+mod dtos;
 mod globals;
-mod configs;
 
 use crate::app::App;
 
