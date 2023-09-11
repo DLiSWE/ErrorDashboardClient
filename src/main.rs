@@ -4,7 +4,6 @@ mod views;
 mod routes;
 mod hooks;
 mod validations;
-mod dtos;
 mod globals;
 mod configs;
 
