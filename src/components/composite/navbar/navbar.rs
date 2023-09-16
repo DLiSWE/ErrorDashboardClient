@@ -13,7 +13,7 @@ use crate::components::composite::navbar::style::{
     navbutton,
     dropdown_navbutton,
 };
-
+use crate::components::base::Button::Button;
 
 #[function_component(Navbar)]
 pub fn navbar() -> Html {
@@ -79,7 +79,7 @@ pub fn navbar() -> Html {
     };
 
     let logout_button = {
-        let navigator = navigator.clone();
+        let _navigator = navigator.clone();
         html! {
             <button title={"Logout"} class={navbutton_class.clone()}>
                 <Icon icon_id={IconId::BootstrapDoorClosedFill}/>
@@ -97,13 +97,35 @@ pub fn navbar() -> Html {
         }
     };
 
+    // let dashboard_button = {
+    //     let navigator = navigator.clone();
+    //     let onclick = Callback::from(move |_| navigator.push(&AppRoute::DashboardPage));
+    //     html! {
+    //         <button title={"Dashboard"} class={navbutton_class.clone()} {onclick}>
+    //             <Icon icon_id={IconId::LucideLayoutDashboard}/>
+    //         </button>
+    //     }
+    // };
+
     let dashboard_button = {
         let navigator = navigator.clone();
         let onclick = Callback::from(move |_| navigator.push(&AppRoute::DashboardPage));
+
+        let class = Some(navbutton_class.clone());
+
         html! {
-            <button title={"Dashboard"} class={navbutton_class.clone()} {onclick}>
+            <Button title={"Dashboard"} class={class} onclick={onclick}>
                 <Icon icon_id={IconId::LucideLayoutDashboard}/>
-            </button>
+            </Button>
+        }
+    };
+
+    let random_button = {
+        let navigator = navigator.clone();
+        let onclick = Callback::from(move |_| navigator.push(&AppRoute::HomePage));
+        
+        html! {
+            <Button label={"Random"} onclick={onclick}/>
         }
     };
 
@@ -123,6 +145,7 @@ pub fn navbar() -> Html {
                 {logout_button}
                 {registration_button}
                 {dashboard_button}
+                {random_button}
             </ul>
 
         </div>
