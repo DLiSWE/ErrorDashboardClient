@@ -4,7 +4,7 @@ use yew_router::prelude::*;
 use yew_icons::{Icon, IconId};
 
 use crate::routes::AppRoute;
-use crate::components::navbar::style::{
+use crate::components::composite::navbar::style::{
     navbar_container,
     navbar_logo_container,
     navlinks,
