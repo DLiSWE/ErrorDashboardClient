@@ -1,7 +1,7 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 use yew_router::router::BrowserRouter;
-use crate::components::composite::navbar::navbar::Navbar;
+use crate::components::navbar::navbar::Navbar;
 use crate::routes::{AppRoute, switch};
 
 

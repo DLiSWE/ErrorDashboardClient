@@ -4,7 +4,7 @@ use yew_router::prelude::*;
 use yew_icons::{Icon, IconId};
 
 use crate::routes::AppRoute;
-use crate::components::composite::navbar::style::{
+use crate::components::navbar::style::{
     navbar_container,
     navbar_logo_container,
     navlinks,
@@ -79,7 +79,7 @@ pub fn navbar() -> Html {
     };
 
     let logout_button = {
-        let _navigator = navigator.clone();
+        let navigator = navigator.clone();
         html! {
             <button title={"Logout"} class={navbutton_class.clone()}>
                 <Icon icon_id={IconId::BootstrapDoorClosedFill}/>
