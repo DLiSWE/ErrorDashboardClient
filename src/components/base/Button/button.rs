@@ -11,7 +11,7 @@ pub struct ButtonProps {
 }
 
 #[function_component(Button)]
-pub fn Button(props: &ButtonProps) -> Html {
+pub fn button(props: &ButtonProps) -> Html {
     // Styles
 
     // Utils
