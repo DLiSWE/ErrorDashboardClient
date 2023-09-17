@@ -4,15 +4,10 @@ use yew_router::prelude::*;
 use yew_icons::{Icon, IconId};
 
 use crate::routes::AppRoute;
-use crate::components::composite::navbar::style::{
-    navbar_container,
-    navbar_logo_container,
-    navlinks,
-    menu_container,
-    menu_button,
-    navbutton,
-    dropdown_navbutton,
-};
+use crate::navbar::subcomponents::navbutton::style::{navbutton, dropdown_navbutton};
+use crate::navbar::subcomponents::menu::style::{menu_container, menu_button};
+use crate::navbar::style::{navbar_container, navlinks};
+use crate::navbar::subcomponents::navbuttons::{home_button, menu_button, login_button, logout_button, registration_button, dashboard_button};
 use crate::components::base::Button::Button;
 
 #[function_component(Navbar)]
@@ -52,60 +47,57 @@ pub fn navbar() -> Html {
     
     // Components
     let menu_button = {
+        let class = menu_button.clone();
         html! {
-            <button title={"Menu"} class={menu_button.clone()} onclick={toggle_dropdown.clone()}>
+            <Button title={"Menu"} class={class} onclick={toggle_dropdown.clone()}>
                 <Icon icon_id={IconId::LucideMenu}/>
-            </button>
+            </Button>
         }
     };
 
     let home_button = {
         let onclick = home_onclick_redirect.clone();
         html! {
-            <button title={"Home"} class={navbutton_class.clone()} {onclick}>
+            <Button title={"Home"} class={navbutton_class.clone()} onclick={onclick}>
                 <Icon icon_id={IconId::HeroiconsSolidHome}/>
-            </button>
+            </Button>
         }
     };
 
     let login_button = {
         let navigator = navigator.clone();
         let onclick = Callback::from(move |_| navigator.push(&AppRoute::LoginPage));
+
+        let class = Some(navbutton_class.clone());
+
         html! {
-            <button title={"Login"} class={navbutton_class.clone()} {onclick}>
+            <Button title={"Login"} class={navbutton_class.clone()} onclick={onclick}>
                 <Icon icon_id={IconId::BootstrapDoorOpenFill}/>
-            </button>
+            </Button>
         }
     };
 
     let logout_button = {
         let _navigator = navigator.clone();
         html! {
-            <button title={"Logout"} class={navbutton_class.clone()}>
-                <Icon icon_id={IconId::BootstrapDoorClosedFill}/>
-            </button>
+            <Button title={"Logout"} >
+                <Icon icon_id={IconId::BootstrapDoorClosedFill} onclick={|_|}/>
+            </Button>
         }
     };
 
     let registration_button = {
         let navigator = navigator.clone();
         let onclick = Callback::from(move |_| navigator.push(&AppRoute::RegistrationPage));
+
+        let class = Some(navbutton_class.clone());
+        
         html! {
-            <button title={"Register"} class={navbutton_class.clone()} {onclick}>
+            <Button title={"Register"} class={class} onclick={onclick}>
                 <Icon icon_id={IconId::HeroiconsSolidClipboardDocumentCheck}/>
-            </button>
+            </Button>
         }
     };
-
-    // let dashboard_button = {
-    //     let navigator = navigator.clone();
-    //     let onclick = Callback::from(move |_| navigator.push(&AppRoute::DashboardPage));
-    //     html! {
-    //         <button title={"Dashboard"} class={navbutton_class.clone()} {onclick}>
-    //             <Icon icon_id={IconId::LucideLayoutDashboard}/>
-    //         </button>
-    //     }
-    // };
 
     let dashboard_button = {
         let navigator = navigator.clone();
@@ -119,16 +111,6 @@ pub fn navbar() -> Html {
             </Button>
         }
     };
-
-    let random_button = {
-        let navigator = navigator.clone();
-        let onclick = Callback::from(move |_| navigator.push(&AppRoute::HomePage));
-        
-        html! {
-            <Button label={"Random"} onclick={onclick}/>
-        }
-    };
-
 
     html! {
         <div class={navbar_container}>
@@ -145,9 +127,7 @@ pub fn navbar() -> Html {
                 {logout_button}
                 {registration_button}
                 {dashboard_button}
-                {random_button}
             </ul>
-
         </div>
     }
 }
