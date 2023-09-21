@@ -1,12 +1,9 @@
-use yew::{prelude::*, html::ChildrenRenderer, virtual_dom::VNode};
+use yew::prelude::*;
 use yew_icons::Icon;
-use yew_router::prelude::*;
+
 use web_sys::MouseEvent;
 
-use crate::components::base::Button::style:: {
-    button_container,
-    button_text,
-};
+use crate::components::base::Button::style::{button_container, button_text};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct ButtonProps {
@@ -14,7 +11,7 @@ pub struct ButtonProps {
     pub label: Option<String>,
     pub onclick: Callback<MouseEvent>,
     pub class: Option<String>,
-    pub children: Option<ChildrenWithProps<Icon>>
+    pub children: Option<ChildrenWithProps<Icon>>,
 }
 
 #[function_component(Button)]

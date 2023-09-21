@@ -1,67 +1,55 @@
-use yew::prelude::*;
 use crate::components::base::Button::Button;
+use yew::prelude::*;
+// use crate::components::composite::navbar::subcomponents::navbutton::style::{
+//     navbutton,
+//     dropdown_navbutton,
+//     menu_button as menu_button_style,
+// };
+use yew_icons::{Icon, IconId};
 
-pub fn menu_button(navbutton_class: &str, home_onclick: Callback<_>) -> Html {
-    let class = menu_button.clone();
+pub fn menu_button(menu_button_style: &str, toggle_dropdown: Callback<MouseEvent>) -> Html {
     html! {
-        <Button title={"Menu"} class={class} onclick={toggle_dropdown.clone()}>
+        <Button title={"Menu"} class={menu_button_style.to_string()} onclick={toggle_dropdown.clone()}>
             <Icon icon_id={IconId::LucideMenu}/>
         </Button>
     }
 }
 
-pub fn home_button(navbutton_class: &str, home_onclick: Callback<_>) -> Html {
+pub fn home_button(navbutton: &str, home_onclick_redirect: Callback<MouseEvent>) -> Html {
     html! {
-        <Button title={"Home"} class={navbutton_class} onclick={home_onclick}>
+        <Button title={"Home"} class={navbutton.to_string()} onclick={home_onclick_redirect.clone()}>
             <Icon icon_id={IconId::HeroiconsSolidHome}/>
         </Button>
     }
 }
 
-
-pub fn login_button(navbutton_class: &str, home_onclick: Callback<_>) {
-    let navigator = navigator.clone();
-    let onclick = Callback::from(move |_| navigator.push(&AppRoute::LoginPage));
-
-    let class = Some(navbutton_class.clone());
-
+pub fn login_button(navbutton: &str, login_onclick: Callback<MouseEvent>) -> Html {
     html! {
-        <Button title={"Login"} class={navbutton_class.clone()} onclick={onclick}>
+        <Button title={"Login"} class={navbutton.to_string()} onclick={login_onclick.clone()}>
             <Icon icon_id={IconId::BootstrapDoorOpenFill}/>
         </Button>
     }
 }
 
-pub fn logout_button(navbutton_class: &str, home_onclick: Callback<_>) {
-    let _navigator = navigator.clone();
+pub fn logout_button(navbutton: &str, home_onclick: Callback<MouseEvent>) -> Html {
     html! {
-        <Button title={"Logout"} >
-            <Icon icon_id={IconId::BootstrapDoorClosedFill} onclick={}/>
+        <Button title={"Logout"} class={navbutton.to_string()} onclick={home_onclick.clone()} >
+            <Icon icon_id={IconId::BootstrapDoorClosedFill}/>
         </Button>
     }
 }
 
-pub fn registration_button(navbutton_class: &str, home_onclick: Callback<_>){
-    let navigator = navigator.clone();
-    let onclick = Callback::from(move |_| navigator.push(&AppRoute::RegistrationPage));
-
-    let class = Some(navbutton_class.clone());
-    
+pub fn registration_button(navbutton: &str, registration_onclick: Callback<MouseEvent>) -> Html {
     html! {
-        <Button title={"Register"} class={class} onclick={onclick}>
+        <Button title={"Register"} class={navbutton.to_string()} onclick={registration_onclick.clone()}>
             <Icon icon_id={IconId::HeroiconsSolidClipboardDocumentCheck}/>
         </Button>
     }
 }
 
-pub fn dashboard_button(navbutton_class: &str, home_onclick: Callback<_>){
-    let navigator = navigator.clone();
-    let onclick = Callback::from(move |_| navigator.push(&AppRoute::DashboardPage));
-
-    let class = Some(navbutton_class.clone());
-
+pub fn dashboard_button(navbutton: &str, dashboard_onclick: Callback<MouseEvent>) -> Html {
     html! {
-        <Button title={"Dashboard"} class={class} onclick={onclick}>
+        <Button title={"Dashboard"} class={navbutton.to_string()} onclick={dashboard_onclick.clone()}>
             <Icon icon_id={IconId::LucideLayoutDashboard}/>
         </Button>
     }

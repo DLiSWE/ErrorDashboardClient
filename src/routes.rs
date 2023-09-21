@@ -1,10 +1,10 @@
 use yew::prelude::*;
 use yew_router::prelude::*;
 
+use crate::views::dashboard::DashboardPage;
 use crate::views::home::HomePage;
 use crate::views::login::LoginPage;
 use crate::views::register::RegistrationPage;
-use crate::views::dashboard::DashboardPage;
 
 #[derive(Routable, Debug, Clone, PartialEq)]
 pub enum AppRoute {
@@ -23,6 +23,6 @@ pub fn switch(routes: AppRoute) -> Html {
         AppRoute::HomePage => html! {<HomePage/>},
         AppRoute::LoginPage => html! {<LoginPage/>},
         AppRoute::RegistrationPage => html! {<RegistrationPage/>},
-        AppRoute::DashboardPage => html! {<DashboardPage/>}
+        AppRoute::DashboardPage => html! {<DashboardPage/>},
     }
 }
