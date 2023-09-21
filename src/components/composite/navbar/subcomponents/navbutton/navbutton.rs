@@ -1,10 +1,5 @@
 use crate::components::base::Button::Button;
 use yew::prelude::*;
-// use crate::components::composite::navbar::subcomponents::navbutton::style::{
-//     navbutton,
-//     dropdown_navbutton,
-//     menu_button as menu_button_style,
-// };
 use yew_icons::{Icon, IconId};
 
 pub fn menu_button(menu_button_style: &str, toggle_dropdown: Callback<MouseEvent>) -> Html {

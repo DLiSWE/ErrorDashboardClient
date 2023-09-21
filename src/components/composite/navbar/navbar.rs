@@ -2,7 +2,7 @@ use web_sys::MouseEvent;
 use yew::prelude::*;
 use yew_router::prelude::*;
 
-use crate::components::composite::navbar::style::{navbar_container, navbar_logo_container};
+use crate::components::composite::navbar::style::{navbar_container, navbar_logo_container, menu_container};
 use crate::components::composite::navbar::subcomponents::navbutton::style::{
     dropdown_navbutton, menu_button_style, navbutton, navlinks,
 };
@@ -22,7 +22,7 @@ pub fn navbar() -> Html {
     let navlinks: String = navlinks();
     let navbutton: String = navbutton();
     let navbar_logo_container = navbar_logo_container();
-    // let menu_container = menu_container();
+    let menu_container = menu_container();
     let menu_button_style: String = menu_button_style();
     let dropdown_navbutton = dropdown_navbutton();
 
@@ -67,6 +67,7 @@ pub fn navbar() -> Html {
     let home_button = home_button(&navbutton, home_onclick_redirect.clone());
     let menu_button = menu_button(&menu_button_style, toggle_dropdown.clone());
     let login_button = login_button(&navbutton, login_onclick.clone());
+    //onclick placeholder for logout page
     let logout_button = logout_button(&navbutton, home_onclick_redirect.clone());
     let registration_button = registration_button(&navbutton, registration_onclick.clone());
     let dashboard_button = dashboard_button(&navbutton, dashboard_onclick.clone());
@@ -77,7 +78,7 @@ pub fn navbar() -> Html {
                 <img src={"./images/micro64.png"} />
                 <h1>{"Error Dashboard"}</h1>
             </div>
-            <div class={menu_button_style}>
+            <div class={menu_container}>
                 {menu_button}
             </div>
             <ul class={navlinks}>

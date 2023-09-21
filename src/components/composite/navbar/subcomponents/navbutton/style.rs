@@ -54,18 +54,6 @@ pub fn menu_button_style() -> String {
 }
 
 #[allow(non_upper_case_globals)]
-pub fn menu_container() -> String {
-    stylist::style!(
-        "
-        padding: 0 1% 0 0;
-    "
-    )
-    .unwrap()
-    .get_class_name()
-    .to_string()
-}
-
-#[allow(non_upper_case_globals)]
 pub fn navbutton() -> String {
     stylist::style!(
         "

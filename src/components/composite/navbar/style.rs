@@ -23,6 +23,18 @@ pub fn navbar_logo_container() -> String {
 }
 
 #[allow(non_upper_case_globals)]
+pub fn menu_container() -> String {
+    stylist::style!(
+        "
+        padding: 0 1% 0 0;
+    "
+    )
+    .unwrap()
+    .get_class_name()
+    .to_string()
+}
+
+#[allow(non_upper_case_globals)]
 pub fn navbar_container() -> String {
     stylist::style!(
         "
