@@ -20,7 +20,7 @@ pub fn button(props: &ButtonProps) -> Html {
     let button_container = button_container();
     let button_text = button_text();
     let combined_style = format!(
-        "{}{}{}",
+        "{} {} {}",
         button_container,
         button_text,
         props.class.as_deref().unwrap_or("")
@@ -34,14 +34,14 @@ pub fn button(props: &ButtonProps) -> Html {
             onclick={ onclick }>
             {
                 if let Some(ref children) = props.children {
-                    html! { for children.iter() }
+                    html! { <div class="children-container"> { for children.iter() } </div> }
                 } else {
                     html! {}
                 }
             }
             {
                 if let Some(ref label) = props.label {
-                    html! { label }
+                    html! { <span class="label-container">{ label }</span> }
                 } else {
                     html! {}
                 }
