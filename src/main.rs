@@ -4,7 +4,7 @@ mod components {
         pub mod navbar;
     }
     pub mod base {
-        pub mod Button;
+        pub mod button;
     }
 }
 mod dtos;

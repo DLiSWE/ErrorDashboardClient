@@ -3,7 +3,7 @@ use yew_icons::Icon;
 
 use web_sys::MouseEvent;
 
-use crate::components::base::Button::style::{button_container, button_text};
+use crate::components::base::button::style::{button_container, button_text};
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct ButtonProps {

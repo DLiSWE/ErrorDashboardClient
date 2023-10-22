@@ -1,4 +1,4 @@
-use crate::components::base::Button::Button;
+use crate::components::base::button::Button;
 use yew::prelude::*;
 use yew_icons::{Icon, IconId};
 use web_sys::MouseEvent;
