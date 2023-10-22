@@ -1,7 +1,7 @@
-use yew::{html, Html, function_component};
+use yew::{function_component, html, Html};
 
 #[function_component(HomePage)]
-pub fn home_page()-> Html {
+pub fn home_page() -> Html {
     html! {
         <div>
             <p>{"Error Dashboard built with Web Assembly in Rust"}</p>

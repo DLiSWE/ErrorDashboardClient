@@ -1,117 +1,67 @@
-use web_sys::MouseEvent;
 use yew::prelude::*;
 use yew_router::prelude::*;
-use yew_icons::{Icon, IconId};
 
-use crate::routes::AppRoute;
-use crate::components::composite::navbar::style::{
-    navbar_container,
-    navbar_logo_container,
-    navlinks,
-    menu_container,
-    menu_button,
-    navbutton,
-    dropdown_navbutton,
+use crate::components::composite::navbar::style::{navbar_container, navbar_logo_container, menu_container, navlinks};
+use crate::components::composite::navbar::subcomponents::navbutton::{
+    dashboard_button, home_button, login_button, logout_button, menu_button, registration_button,
 };
-
+use crate::routes::AppRoute;
 
 #[function_component(Navbar)]
 pub fn navbar() -> Html {
     // Hooks
     let navigator = use_navigator().unwrap();
-    let dropdown_handler= use_state(|| false);
+    let dropdown_handler = use_state(|| false);
 
     // Styles
     let navbar_container = navbar_container();
-    let navlinks: String = navlinks();
-    let navbutton: String = navbutton();
     let navbar_logo_container = navbar_logo_container();
     let menu_container = menu_container();
-    let menu_button = menu_button();
-    let dropdown_navbutton = dropdown_navbutton();
+    let navlinks = navlinks();
 
     // Utils
     let toggle_dropdown = {
         let dropdown_visible_setter = dropdown_handler.setter().clone();
         let dropdown_handler_for_toggle = dropdown_handler.clone();
-        
+    
         Callback::from(move |_: MouseEvent| {
             let current_state = *dropdown_handler_for_toggle;
             dropdown_visible_setter.set(!current_state);
         })
     };
-
-    let navbutton_class = if *dropdown_handler {
-        dropdown_navbutton.clone()
-    } else { navbutton.clone() };
-
+    
     let home_onclick_redirect = {
         let navigator = navigator.clone();
         Callback::from(move |_| navigator.push(&AppRoute::HomePage))
     };
-    
+
+    let login_onclick = {
+        let navigator = navigator.clone();
+        Callback::from(move |_| navigator.push(&AppRoute::LoginPage))
+    };
+
+    let registration_onclick = {
+        let navigator = navigator.clone();
+        Callback::from(move |_| navigator.push(&AppRoute::RegistrationPage))
+    };
+
+    let dashboard_onclick = {
+        let navigator = navigator.clone();
+        Callback::from(move |_| navigator.push(&AppRoute::DashboardPage))
+    };
+
     // Components
-    let menu_button = {
-        html! {
-            <button title={"Menu"} class={menu_button.clone()} onclick={toggle_dropdown.clone()}>
-                <Icon icon_id={IconId::LucideMenu}/>
-            </button>
-        }
-    };
-
-    let home_button = {
-        let onclick = home_onclick_redirect.clone();
-        html! {
-            <button title={"Home"} class={navbutton_class.clone()} {onclick}>
-                <Icon icon_id={IconId::HeroiconsSolidHome}/>
-            </button>
-        }
-    };
-
-    let login_button = {
-        let navigator = navigator.clone();
-        let onclick = Callback::from(move |_| navigator.push(&AppRoute::LoginPage));
-        html! {
-            <button title={"Login"} class={navbutton_class.clone()} {onclick}>
-                <Icon icon_id={IconId::BootstrapDoorOpenFill}/>
-            </button>
-        }
-    };
-
-    let logout_button = {
-        let navigator = navigator.clone();
-        html! {
-            <button title={"Logout"} class={navbutton_class.clone()}>
-                <Icon icon_id={IconId::BootstrapDoorClosedFill}/>
-            </button>
-        }
-    };
-
-    let registration_button = {
-        let navigator = navigator.clone();
-        let onclick = Callback::from(move |_| navigator.push(&AppRoute::RegistrationPage));
-        html! {
-            <button title={"Register"} class={navbutton_class.clone()} {onclick}>
-                <Icon icon_id={IconId::HeroiconsSolidClipboardDocumentCheck}/>
-            </button>
-        }
-    };
-
-    let dashboard_button = {
-        let navigator = navigator.clone();
-        let onclick = Callback::from(move |_| navigator.push(&AppRoute::DashboardPage));
-        html! {
-            <button title={"Dashboard"} class={navbutton_class.clone()} {onclick}>
-                <Icon icon_id={IconId::LucideLayoutDashboard}/>
-            </button>
-        }
-    };
-
+    let home_button = home_button(*dropdown_handler, home_onclick_redirect.clone());
+    let menu_button = menu_button(toggle_dropdown.clone());
+    let login_button = login_button(*dropdown_handler, login_onclick.clone());
+    let logout_button = logout_button(*dropdown_handler, home_onclick_redirect.clone());
+    let registration_button = registration_button(*dropdown_handler, registration_onclick.clone());
+    let dashboard_button = dashboard_button(*dropdown_handler, dashboard_onclick.clone());
 
     html! {
         <div class={navbar_container}>
             <div class={navbar_logo_container} onclick={home_onclick_redirect.clone()}>
-                <img src={"./images/micro64.png"} />
+                <img src={"./images/error_icon.png"} />
                 <h1>{"Error Dashboard"}</h1>
             </div>
             <div class={menu_container}>
@@ -124,7 +74,6 @@ pub fn navbar() -> Html {
                 {registration_button}
                 {dashboard_button}
             </ul>
-
         </div>
     }
 }

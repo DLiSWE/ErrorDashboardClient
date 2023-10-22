@@ -1,9 +1,9 @@
 use std::collections::HashMap;
 use std::convert::From;
-use web_sys::{HtmlInputElement, Event};
+use wasm_bindgen::JsCast;
+use web_sys::{Event, HtmlInputElement};
 use yew::prelude::*;
 use yew::Callback;
-use wasm_bindgen::JsCast;
 
 #[hook]
 pub fn use_form<T>(
@@ -24,7 +24,7 @@ where
                     let value: String = input.value();
 
                     let mut current_state: HashMap<String, T> = (*form).clone();
-                    
+
                     current_state.insert(field_name, T::from(value));
                     form.set(current_state);
                 }
@@ -34,4 +34,3 @@ where
 
     (form_handle, handle_change)
 }
-

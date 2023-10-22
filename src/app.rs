@@ -1,9 +1,8 @@
+use crate::components::composite::navbar::Navbar;
+use crate::routes::{switch, AppRoute};
 use yew::prelude::*;
 use yew_router::prelude::*;
 use yew_router::router::BrowserRouter;
-use crate::components::composite::navbar::navbar::Navbar;
-use crate::routes::{AppRoute, switch};
-
 
 #[function_component(App)]
 pub fn app() -> Html {
